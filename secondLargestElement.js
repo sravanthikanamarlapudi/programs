@@ -1,16 +1,13 @@
 export const secondLargestElement = arr => {
-  let result;
-  let temp;
+  let largest = 0;
+  let sLargest = 0;
 
   for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] < arr[j]) {
-        temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-        result = arr[1];
-      }
+    if (largest < arr[i]) {
+      sLargest = largest;
+      largest = arr[i];
     }
+    if (largest > arr[i] && sLargest < arr[i]) sLargest = arr[i];
   }
-  return result;
+  return sLargest;
 };
